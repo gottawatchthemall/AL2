@@ -56,9 +56,9 @@ public class MaClasse : IUneInterface
 
 ## Polymorphisme
 
-Imaginons le code suivant
+Imaginons le code suivant :
 
-```
+```C#
 public abstract class Personnage
 {
 	public abstract void AttaqueSpeciale();
@@ -83,7 +83,7 @@ public class Guerrier : Personnage
 
 Comme Sorcier et Guerrier sont des personnages il est possible de constituer une équipe composée de personnages qui auront leurs propres spécificités et comportements sans jamais que cela n'apparaisse au niveau de l'équipe.
 
-```
+```C#
 public class Equipe
 {
 	private List<Personnage> personnages;
