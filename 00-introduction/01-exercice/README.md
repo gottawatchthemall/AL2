@@ -31,10 +31,16 @@ Pour le double cheese :
 ex :
 
 ```
-S|T|C -> S|T|C|C
-C|S|C|T -> C|C|S|C|C|T
+S|T|F -> S|T|F|F
+F|S|F|T -> F|F|S|F|F|T
 ```
 
-- C : Cheese
+- C : Fromage
 - S : Salade
 - T : Tomate
+
+## Etape 4
+
+Bravo, vous venez probablement d'obtenir un bon code legacy :) 
+
+Si ne n'est pas le cas, faites marcher votre code puis réféchir à comment vous auriez pu architecturer votre code maintenant que vous avez une meilleure vision du projet.
