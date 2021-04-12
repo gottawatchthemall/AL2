@@ -1,0 +1,15 @@
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/bin/Debug/net5.0/01.HelloKebab.deps.json
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/bin/Debug/net5.0/01.HelloKebab.runtimeconfig.json
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/bin/Debug/net5.0/01.HelloKebab.runtimeconfig.dev.json
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/bin/Debug/net5.0/01.HelloKebab.dll
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/bin/Debug/net5.0/ref/01.HelloKebab.dll
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/bin/Debug/net5.0/01.HelloKebab.pdb
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/obj/Debug/net5.0/01.HelloKebab.csprojAssemblyReference.cache
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/obj/Debug/net5.0/01.HelloKebab.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/obj/Debug/net5.0/01.HelloKebab.AssemblyInfoInputs.cache
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/obj/Debug/net5.0/01.HelloKebab.AssemblyInfo.cs
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/obj/Debug/net5.0/01.HelloKebab.csproj.CoreCompileInputs.cache
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/obj/Debug/net5.0/01.HelloKebab.dll
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/obj/Debug/net5.0/ref/01.HelloKebab.dll
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/obj/Debug/net5.0/01.HelloKebab.pdb
+/Users/mickaelmetesreau/Projects/ESGI/AL/00-introduction/01-exercice/init/obj/Debug/net5.0/01.HelloKebab.genruntimeconfig.cache
