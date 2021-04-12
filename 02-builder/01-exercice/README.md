@@ -1,4 +1,4 @@
-# Exercice : Hello Polymorphisme
+# Exercice : Builder
 
 ## Objectifs
 
