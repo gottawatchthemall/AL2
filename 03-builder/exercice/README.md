@@ -2,7 +2,7 @@
 
 ## Objectifs
 
-- Savoir utiliser des interfaces
+- Savoir construire une builder
 
 **Temps indicatif** : 30 minutes
 

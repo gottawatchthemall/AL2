@@ -8,7 +8,7 @@
 
 ## Etape 1
 
-Je viens d'ouvrir un restaurant de Kebabs et afin de gérer mon système de prise de commande, j'ai besoin que vous me livriez un objet Kebab capable d'être créé avec différents ingrédients (salade, tomate, oignons, viande, etc). J'ai déjà conçu une interface graphique, vous devez juste créer l'objet Kebab qui doit seulement avoir une seule méthode qui ne prend pas d'argument et qui renvoie un booleen afin de savoir si un Kebab est végétarien ou non.
+Je viens d'ouvrir un restaurant de Kebabs et afin de gérer mon système de prise de commande, j'ai besoin que vous me livriez un objet Kebab capable d'être créé avec différents ingrédients (salade, tomate, oignons, viande, etc). J'ai déjà conçu une interface graphique, vous devez juste créer l'objet Kebab qui doit seulement avoir une seule méthode qui ne prend pas d'argument et qui renvoie un booléen afin de savoir si un Kebab est végétarien ou non.
 
 ## Etape 2
 
@@ -35,7 +35,7 @@ S|T|F -> S|T|F|F
 F|S|F|T -> F|F|S|F|F|T
 ```
 
-- C : Fromage
+- F : Fromage
 - S : Salade
 - T : Tomate
 
@@ -43,4 +43,4 @@ F|S|F|T -> F|F|S|F|F|T
 
 Bravo, vous venez probablement d'obtenir un bon code legacy :) 
 
-Si ne n'est pas le cas, faites marcher votre code puis réféchir à comment vous auriez pu architecturer votre code maintenant que vous avez une meilleure vision du projet.
+Si ne n'est pas le cas, faites marcher votre code puis réfléchir à comment vous auriez pu architecturer votre code maintenant que vous avez une meilleure vision du projet.

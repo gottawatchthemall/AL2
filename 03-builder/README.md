@@ -10,7 +10,7 @@ public class Pizza
 }
 ```
 
-Puis tentons de l'utiliser
+Puis tentons de l'utiliser :
 
 ```C#
 var pizza = new Pizza(10, true, false, true, false, true, true);
@@ -18,7 +18,7 @@ var pizza = new Pizza(10, true, false, true, false, true, true);
 
 Difficile de comprendre à quoi correspondent les paramètres d'initialisation :(
 
-Essayons une autre implémentation
+Essayons une autre implémentation :
 
 ```C#
 public class Pizza
@@ -36,7 +36,7 @@ public class Pizza
 }
 ```
 
-Puis tentons de l'utiliser
+Puis tentons de l'utiliser :
 
 ```C#
 var pizza = new Pizza
@@ -131,7 +131,7 @@ class PizzaBuilder
 }
 ```
 
-Utilisons le
+Utilisons le :
 
 ```C#
 var pizza = new PizzaBuilder()
@@ -144,3 +144,5 @@ var pizza = new PizzaBuilder()
                     .WithOlives(false)
                     .Build();
 ```
+
+Le design pattern builder est un design pattern de création qui permet de configurer et créer des objets complexes étape par étape de manière simple et lisible.
