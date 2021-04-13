@@ -119,4 +119,4 @@ var result = bdd.Execute("ma requete sql");
 bdd.CloseConnection();
 ```
 
-Interet : Factorise et cache les détails de création d'un service
+Le design pattern factory est un design pattern de création qui permet de factoriser et de cacher les détails de création d'un objet.
