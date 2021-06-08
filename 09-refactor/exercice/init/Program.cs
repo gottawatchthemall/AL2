@@ -5,7 +5,7 @@ namespace csharpcore
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Run(string[] args)
         {
             Console.WriteLine("OMGHAI!");
 
