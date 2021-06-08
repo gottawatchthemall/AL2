@@ -6,7 +6,8 @@ namespace csharpcore
 {
     public class Game
     {
-        public static List<string> lines = new List<string>();
+        public static List<string> output = new List<string>();
+        
         List<string> players = new List<string>();
 
         int[] places = new int[6];
@@ -196,10 +197,11 @@ namespace csharpcore
             return true;
         }
 
-        private void WriteLine(string questionWasIncorrectlyAnswered)
+        private void WriteLine(string line)
         {
-            lines.Add(questionWasIncorrectlyAnswered);
-            Console.WriteLine(questionWasIncorrectlyAnswered);
+            output.Add(line);
+
+            Console.WriteLine(line);
         }
 
 

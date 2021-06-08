@@ -14,4 +14,13 @@
 
   <ItemGroup>
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="outputAL2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="randomAL2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
