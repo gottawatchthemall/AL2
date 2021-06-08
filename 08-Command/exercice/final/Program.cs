@@ -7,113 +7,92 @@ namespace _08.Command
 {
     // CODER ICI
 
-    class CLI
-    {
-        private Stack<CommandBase> _history;
-        private Calculator _calculator;
-
-        public CLI()
-        {
-            _calculator = new Calculator();
-            _history = new Stack<CommandBase>();
-        }
-        
-        public void Compute(char p0, int p1)
-        {
-           
-        }
-
-        public int Result()
-        {
-            return _calculator.Result;
-        }
-
-        public void Undo()
-        {
-            var cmd = _history.Pop();
-            cmd.Undo();
-        }
-    }
-
     abstract class CommandBase
     {
+        protected readonly Calculator _calculator;
+        protected readonly int _value;
+
+        public CommandBase(Calculator calculator, int value)
+        {
+            _calculator = calculator;
+            _value = value;
+        }
+
         public abstract void Do();
         public abstract void Undo();
     }
 
     class MultiplyCommand : CommandBase
     {
-        private readonly Calculator _calc;
-        private readonly int _value;
-
-        public MultiplyCommand(Calculator calc, int value)
+        public MultiplyCommand(Calculator calculator, int value)
+            : base(calculator, value)
         {
-            _calc = calc;
-            _value = value;
-        }
-        
-        public override void Do()
-        {
-            _calc.Multiply(_value);
         }
 
-        public override void Undo()
-        {
-            _calc.Divide(_value);
-        }
+        public override void Do() => _calculator.Multiply(_value);
+
+        public override void Undo() => _calculator.Divide(_value);
     }
 
     class SumCommand : CommandBase
     {
-        private readonly Calculator _calc;
-        private readonly int _value;
-
-        public SumCommand(Calculator calc, int value)
+        public SumCommand(Calculator calculator, int value)
+            : base(calculator, value)
         {
-            _calc = calc;
-            _value = value;
-        }
-        
-        public override void Do()
-        {
-            _calc.Plus(_value);
         }
 
-        public override void  Undo()
-        {
-            _calc.Minus(_value);
-        }
+        public override void Do() => _calculator.Plus(_value);
+
+        public override void Undo() => _calculator.Minus(_value);
     }
 
-    public class Calculator
+    class Calculator
     {
-        public int Result { get; private set; }
+        public int Result { get; set; }
 
-        public void Plus(int v)
+        public void Plus(int value) => Result += value;
+        public void Minus(int value) => Result -= value;
+        public void Divide(int value) => Result /= value;
+        public void Multiply(int value) => Result *= value;
+    }
+
+    class CLI
+    {
+        private readonly Stack<CommandBase> history;
+        private readonly Calculator calculator;
+        
+        public CLI()
         {
-            Result = Result + v;
+            history = new Stack<CommandBase>();
+            calculator = new Calculator();
         }
         
-        public void Minus(int v)
-        {
-            Result = Result - v;
-        }
+        public int Result() => calculator.Result;
         
-        public void Multiply(int v)
+        public void Compute(char op, int value)
         {
-            Result = Result * v;
+            CommandBase cmd = op switch
+            {
+                '+' => new SumCommand(calculator, value),
+                '*' => new MultiplyCommand(calculator, value),
+                _ => throw new Exception()
+            };
+
+            cmd.Do();
+
+            history.Push(cmd);
         }
-        
-        public void Divide(int v)
+
+        public void Undo()
         {
-            Result = Result / v;
+            var cmd = history.Pop();
+            cmd.Undo();
         }
     }
 
     public class Enonce
-    {  
-             
-       [Fact]
+    {
+        [Fact]
         public void _01_Creer_une_classe_Calculator_avec_une_methode_Plus_et_Minus_et_Multiply_et_Divide()
         {
             Calculator calculator = new Calculator();
@@ -195,7 +174,7 @@ namespace _08.Command
             Assert.NotNull(multiply);
         }
 
-        
+
         [Fact]
         public void _05_Creer_une_classe_CLI_avec_une_methode_Compute_et_Undo_et_Result()
         {
