@@ -1,128 +1,56 @@
-using System;
-using Xunit;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace _08.Command
+namespace csharpcore
 {
-    // CODER ICI
-
-    public class Enonce
-    {  
-        /*      
-       [Fact]
-        public void _01_Creer_une_classe_Calculator_avec_une_methode_Plus_et_Minus_et_Multiply_et_Divide()
+    public class Program
+    {
+        public static void Main(string[] args)
         {
-            Calculator calculator = new Calculator();
+            Console.WriteLine("OMGHAI!");
 
-            Assert.Equal(0, calculator.Result);
+            IList<Item> Items = new List<Item>{
+                new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
+                new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
+                new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
+                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
+                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80},
+                new Item
+                {
+                    Name = "Backstage passes to a TAFKAL80ETC concert",
+                    SellIn = 15,
+                    Quality = 20
+                },
+                new Item
+                {
+                    Name = "Backstage passes to a TAFKAL80ETC concert",
+                    SellIn = 10,
+                    Quality = 49
+                },
+                new Item
+                {
+                    Name = "Backstage passes to a TAFKAL80ETC concert",
+                    SellIn = 5,
+                    Quality = 49
+                },
+				// this conjured item does not work properly yet
+				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+            };
 
-            calculator.Plus(4);
+            var app = new GildedRose(Items);
 
-            Assert.Equal(4, calculator.Result);
 
-            calculator.Minus(1);
-
-            Assert.Equal(3, calculator.Result);
-
-            calculator.Multiply(2);
-
-            Assert.Equal(6, calculator.Result);
-
-            calculator.Divide(3);
-
-            Assert.Equal(2, calculator.Result);
-        }*/
-
-/*
-        [Fact]
-        public void _02_Creer_une_classe_SumCommand_avec_une_methode_Do_et_Undo()
-        {
-            Calculator calculator = new Calculator();
-
-            SumCommand sum = new SumCommand(calculator, 10);
-
-            Assert.Equal(0, calculator.Result);
-
-            sum.Do();
-
-            Assert.Equal(10, calculator.Result);
-
-            sum.Undo();
-
-            Assert.Equal(0, calculator.Result);
-        }*/
-
-/*
-        [Fact]
-        public void _03_Creer_une_classe_MultiplyCommand_avec_une_methode_Do_et_Undo()
-        {
-            Calculator calculator = new Calculator();
-
-            SumCommand sum = new SumCommand(calculator, 5);
-
-            MultiplyCommand multiply = new MultiplyCommand(calculator, 10);
-
-            Assert.Equal(0, calculator.Result);
-
-            sum.Do();
-
-            Assert.Equal(5, calculator.Result);
-
-            multiply.Do();
-
-            Assert.Equal(50, calculator.Result);
-
-            multiply.Undo();
-
-            Assert.Equal(5, calculator.Result);
-        }*/
-
-        /*[Fact]
-        public void _04_Creer_une_classe_abstraite_CommandBase_avec_une_methode_Do_et_Undo_pour_unifier_SumCommand_et_MultiplyCommand()
-        {
-            Calculator calculator = new Calculator();
-
-            CommandBase sum = new SumCommand(calculator, 5);
-
-            Assert.NotNull(sum);
-
-            CommandBase multiply = new MultiplyCommand(calculator, 5);
-
-            Assert.NotNull(multiply);
-        }*/
-
-        /*
-        [Fact]
-        public void _05_Creer_une_classe_CLI_avec_une_methode_Compute_et_Undo_et_Result()
-        {
-            CLI cli = new CLI();
-
-            Assert.Equal(0, cli.Result());
-
-            cli.Compute('+', 2);
-
-            Assert.Equal(2, cli.Result());
-
-            cli.Compute('*', 2);
-
-            Assert.Equal(4, cli.Result());
-
-            cli.Compute('+', 3);
-
-            Assert.Equal(7, cli.Result());
-
-            cli.Undo();
-
-            Assert.Equal(4, cli.Result());
-
-            cli.Undo();
-
-            Assert.Equal(2, cli.Result());
-
-            cli.Undo();
-
-            Assert.Equal(0, cli.Result());
-        }*/ 
+            for (var i = 0; i < 31; i++)
+            {
+                Console.WriteLine("-------- day " + i + " --------");
+                Console.WriteLine("name, sellIn, quality");
+                for (var j = 0; j < Items.Count; j++)
+                {
+                    System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
+                }
+                Console.WriteLine("");
+                app.UpdateQuality();
+            }
+        }
     }
 }
