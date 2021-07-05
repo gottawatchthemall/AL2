@@ -12,11 +12,21 @@ namespace csharpcore
 
         public static void Run(string[] args)
         {
-            Game aGame = new Game();
+            var questionDecks = new Dictionary<QuestionCategory, LinkedList<string>>
+            {
+                {QuestionCategory.Pop, QuestionDeckFactory.Create(QuestionCategory.Pop)},
+                {QuestionCategory.Rock, QuestionDeckFactory.Create(QuestionCategory.Rock)},
+                {QuestionCategory.Science, QuestionDeckFactory.Create(QuestionCategory.Science)},
+                {QuestionCategory.Sports, QuestionDeckFactory.Create(QuestionCategory.Sports)},
+            };
+            
+            var aGame = new Game(questionDecks);
+            
+            aGame.Publish += new GameListener().Handle;
 
-            aGame.add("Chet");
-            aGame.add("Pat");
-            aGame.add("Sue");
+            aGame.AddPlayer("Chet");
+            aGame.AddPlayer("Pat");
+            aGame.AddPlayer("Sue");
 
             Random rand = new Random();
 
@@ -24,16 +34,19 @@ namespace csharpcore
             {
                 var randomValue = rand.Next(5);
 
-                aGame.roll(randomValue + 1);
+                aGame.Roll(randomValue + 1);
 
                 if (rand.Next(9) == 7)
                 {
-                    notAWinner = aGame.wrongAnswer();
+                    notAWinner = aGame.WrongAnswer();
                 }
                 else
                 {
-                    notAWinner = aGame.wasCorrectlyAnswered();
+                    notAWinner = aGame.WasCorrectlyAnswered();
                 }
+                
+                aGame.NextPlayer();
+
             } while (notAWinner);
         }
 
@@ -49,24 +62,24 @@ namespace csharpcore
             {
                 Game aGame = new Game();
             
-                aGame.add("Chet");
-                aGame.add("Pat");
-                aGame.add("Sue");
+                aGame.AddPlayer("Chet");
+                aGame.AddPlayer("Pat");
+                aGame.AddPlayer("Sue");
             
                 do
                 {
                     var randomValue = rand.Next(5);
-                    aGame.roll(randomValue + 1);
+                    aGame.Roll(randomValue + 1);
             
                     randomValue = rand.Next(9);
 
                     if (randomValue == 7)
                     {
-                        notAWinner = aGame.wrongAnswer();
+                        notAWinner = aGame.WrongAnswer();
                     }
                     else
                     {
-                        notAWinner = aGame.wasCorrectlyAnswered();
+                        notAWinner = aGame.WasCorrectlyAnswered();
                     }
                 } while (notAWinner);
             }
