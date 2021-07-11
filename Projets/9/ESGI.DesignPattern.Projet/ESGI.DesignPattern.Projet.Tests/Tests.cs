@@ -51,11 +51,11 @@ namespace ESGI.DesignPattern.Projet.Tests
         [Fact()]
         public void payment_is_constructed_correctly()
         {
-            var _christmasDay = new DateTime(2010, 12, 25);
-            var _payment = new Payment(1000.0, _christmasDay);
+            var christmasDay = new DateTime(2010, 12, 25);
+            var payment = new Payment(1000.0, christmasDay);
 
-            Assert.Equal(1000, _payment.Amount);
-            Assert.Equal(_christmasDay, _payment.Date);
+            Assert.Equal(1000, payment.Amount);
+            Assert.Equal(christmasDay, payment.Date);
 
         }
 
@@ -64,7 +64,6 @@ namespace ESGI.DesignPattern.Projet.Tests
         {
             var advisedLineStrategy = new CapitalStrategyAdvisedLine();
             DateTime start = November(20, 2003);
-            DateTime maturity = November(20, 2006);
             DateTime expiry = November(20, 2007);
 
             Loan advisedLineLoan = Loan.NewAdvisedLine(LOAN_AMOUNT, start, expiry, LOW_RISK_TAKING);
