@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace ESGI.DesignPattern.Projet
 {
     public abstract class CapitalStrategy

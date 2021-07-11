@@ -7,40 +7,40 @@ namespace ESGI.DesignPattern.Projet
     {
         double _commitment;
         private DateTime? _expiry;
-        IList<Payment> _payments = new List<Payment>();
         private DateTime? _today;
         private DateTime _start;
         private double _riskRating;
         private double _unusedPercentage;
+        IList<Payment> _payments = new List<Payment>();
 
         public Loan(double commitment,
-                    DateTime start,
-                    DateTime? expiry,
-                    int riskRating)
+            DateTime start,
+            DateTime? expiry,
+            int riskRating,
+            double unusedPercentage)
         {
-            this._expiry = expiry;
-            this._commitment = commitment;
-            this._today = null;
-            this._start = start;
-            this._riskRating = riskRating;
-            this._unusedPercentage = 1.0;
+            _expiry = expiry;
+            _commitment = commitment;
+            _today = null;
+            _start = start;
+            _riskRating = riskRating;
+            _unusedPercentage = unusedPercentage;
         }
 
-        public static Loan NewTermLoan(double commitment, DateTime start, DateTime maturity, int riskRating)
+        public static Loan NewTermLoan(double commitment, DateTime start, int riskRating)
         {
-            return new Loan(commitment,  start, null,riskRating);
+            return new Loan(commitment, start, null, riskRating, 1.0);
         }
 
         public static Loan NewRevolver(double commitment, DateTime start, DateTime expiry, int riskRating)
         {
-            return new Loan(commitment,  start, expiry, riskRating);
+            return new Loan(commitment, start, expiry, riskRating, 1.0);
         }
 
         public static Loan NewAdvisedLine(double commitment, DateTime start, DateTime expiry, int riskRating)
         {
             if (riskRating > 3) return null;
-            Loan advisedLine = new Loan(commitment, start, expiry,riskRating);
-            advisedLine.SetUnusedPercentage(0.1);
+            var advisedLine = new Loan(commitment, start, expiry, riskRating, 0.1);
             return advisedLine;
         }
 
@@ -82,11 +82,6 @@ namespace ESGI.DesignPattern.Projet
         public double GetUnusedPercentage()
         {
             return _unusedPercentage;
-        }
-
-        public void SetUnusedPercentage(double unusedPercentage)
-        {
-            _unusedPercentage = unusedPercentage;
         }
     }
 }

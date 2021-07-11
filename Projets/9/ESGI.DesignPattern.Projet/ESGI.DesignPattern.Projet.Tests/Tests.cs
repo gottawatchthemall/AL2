@@ -15,9 +15,8 @@ namespace ESGI.DesignPattern.Projet.Tests
         public void test_term_loan_same_payments()
         {
             DateTime start = November(20, 2003);
-            DateTime maturity = November(20, 2006);
 
-            Loan termLoan = Loan.NewTermLoan(LOAN_AMOUNT, start, maturity, HIGH_RISK_TAKING);
+            Loan termLoan = Loan.NewTermLoan(LOAN_AMOUNT, start, HIGH_RISK_TAKING);
             termLoan.Payment(1000.00, November(20, 2004));
             termLoan.Payment(1000.00, November(20, 2005));
             termLoan.Payment(1000.00, November(20, 2006));
