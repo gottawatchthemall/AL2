@@ -11,7 +11,7 @@ namespace ESGI.DesignPattern.Projet
         private double _unusedPercentage;
         IList<Payment> _payments = new List<Payment>();
 
-        public Loan(double commitment,
+        private Loan(double commitment,
             DateTime start,
             DateTime? expiry,
             double unusedPercentage)
