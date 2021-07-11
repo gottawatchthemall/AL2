@@ -7,7 +7,6 @@ namespace ESGI.DesignPattern.Projet
     {
         double _commitment;
         private DateTime? _expiry;
-        private DateTime? _today;
         private DateTime _start;
         private double _unusedPercentage;
         IList<Payment> _payments = new List<Payment>();
@@ -19,7 +18,6 @@ namespace ESGI.DesignPattern.Projet
         {
             _expiry = expiry;
             _commitment = commitment;
-            _today = null;
             _start = start;
             _unusedPercentage = unusedPercentage;
         }
@@ -36,8 +34,7 @@ namespace ESGI.DesignPattern.Projet
 
         public static Loan NewAdvisedLine(double commitment, DateTime start, DateTime expiry)
         {
-            var advisedLine = new Loan(commitment, start, expiry, 0.1);
-            return advisedLine;
+            return new Loan(commitment, start, expiry, 0.1);
         }
 
         public DateTime? GetExpiry()
@@ -53,11 +50,6 @@ namespace ESGI.DesignPattern.Projet
         public void Payment(double amount, DateTime paymentDate)
         {
             _payments.Add(new Payment(amount, paymentDate));
-        }
-
-        public DateTime? GetToday()
-        {
-            return _today;
         }
 
         public DateTime? GetStart()

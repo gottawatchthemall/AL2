@@ -23,7 +23,7 @@ namespace ESGI.DesignPattern.Projet
 
         protected double YearsTo(DateTime? endDate, Loan loan)
         {
-            DateTime? beginDate = (loan.GetToday() == null ? loan.GetStart() : loan.GetToday());
+            DateTime? beginDate = loan.GetStart();
             return (double)((endDate?.Ticks - beginDate?.Ticks) / MILLIS_PER_DAY / DAYS_PER_YEAR);
         }
     }
