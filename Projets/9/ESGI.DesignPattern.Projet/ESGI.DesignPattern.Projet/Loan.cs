@@ -109,11 +109,6 @@ namespace ESGI.DesignPattern.Projet
             _unusedPercentage = unusedPercentage;
         }
 
-        public double UnusedRiskAmount()
-        {
-            return _commitment;
-        }
-
         public double OutstandingRiskAmount()
         {
             return _outstanding;
