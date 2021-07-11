@@ -5,15 +5,15 @@ namespace ESGI.DesignPattern.Projet
 {
     public class Loan
     {
-        double _commitment = 1.0;
+        double _commitment;// = 1.0;
         private DateTime? _expiry;
         private DateTime? _maturity;
         private double _outstanding;
         IList<Payment> _payments = new List<Payment>();
-        private DateTime? _today = DateTime.Now;
+        private DateTime? _today;// = DateTime.Now;
         private DateTime _start;
-        private long MILLIS_PER_DAY = 86400000;
-        private long DAYS_PER_YEAR = 365;
+        // private long MILLIS_PER_DAY = 86400000;
+        // private long DAYS_PER_YEAR = 365;
         private double _riskRating;
         private double _unusedPercentage;
         private CapitalStrategy _capitalStrategy;
@@ -114,7 +114,7 @@ namespace ESGI.DesignPattern.Projet
 
         public double UnusedRiskAmount()
         {
-            return (_commitment - _outstanding);
+            return _commitment;
         }
 
         public double OutstandingRiskAmount()
