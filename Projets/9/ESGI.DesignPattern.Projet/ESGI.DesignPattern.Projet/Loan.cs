@@ -8,7 +8,6 @@ namespace ESGI.DesignPattern.Projet
         double _commitment;
         private DateTime? _expiry;
         private DateTime? _maturity;
-        private double _outstanding;
         IList<Payment> _payments = new List<Payment>();
         private DateTime? _today;
         private DateTime _start;
@@ -107,11 +106,6 @@ namespace ESGI.DesignPattern.Projet
         public void SetUnusedPercentage(double unusedPercentage)
         {
             _unusedPercentage = unusedPercentage;
-        }
-
-        public double OutstandingRiskAmount()
-        {
-            return _outstanding;
         }
     }
 }
