@@ -13,27 +13,21 @@ namespace ESGI.DesignPattern.Projet
 
         public override double Duration(Loan loan)
         {
-            return WeightedAverageDuration(loan);
-        }
+            var weightedAverage = 0.0;
+            var sumOfPayments = 0.0;
 
-        private double WeightedAverageDuration(Loan loan)
-        {
-            double duration = 0.0;
-            double weightedAverage = 0.0;
-            double sumOfPayments = 0.0;
-
+            if (Math.Abs(loan.GetCommitment()) <= EPSILON)
+            {
+                return 0.0;
+            }
+            
             foreach (var payment in loan.Payments())
             {
                 sumOfPayments += payment.Amount;
                 weightedAverage += YearsTo(payment.Date, loan) * payment.Amount;
             }
 
-            if (Math.Abs(loan.GetCommitment()) > EPSILON)
-            {
-                duration = weightedAverage / sumOfPayments;
-            }
-
-            return duration;
+            return weightedAverage / sumOfPayments;
         }
     }
 }

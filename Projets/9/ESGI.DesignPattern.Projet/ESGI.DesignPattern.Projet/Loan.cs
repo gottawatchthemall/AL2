@@ -9,38 +9,34 @@ namespace ESGI.DesignPattern.Projet
         private DateTime? _expiry;
         private DateTime? _today;
         private DateTime _start;
-        private double _riskRating;
         private double _unusedPercentage;
         IList<Payment> _payments = new List<Payment>();
 
         public Loan(double commitment,
             DateTime start,
             DateTime? expiry,
-            int riskRating,
             double unusedPercentage)
         {
             _expiry = expiry;
             _commitment = commitment;
             _today = null;
             _start = start;
-            _riskRating = riskRating;
             _unusedPercentage = unusedPercentage;
         }
 
-        public static Loan NewTermLoan(double commitment, DateTime start, int riskRating)
+        public static Loan NewTermLoan(double commitment, DateTime start)
         {
-            return new Loan(commitment, start, null, riskRating, 1.0);
+            return new Loan(commitment, start, null, 1.0);
         }
 
-        public static Loan NewRevolver(double commitment, DateTime start, DateTime expiry, int riskRating)
+        public static Loan NewRevolver(double commitment, DateTime start, DateTime expiry)
         {
-            return new Loan(commitment, start, expiry, riskRating, 1.0);
+            return new Loan(commitment, start, expiry, 1.0);
         }
 
-        public static Loan NewAdvisedLine(double commitment, DateTime start, DateTime expiry, int riskRating)
+        public static Loan NewAdvisedLine(double commitment, DateTime start, DateTime expiry)
         {
-            if (riskRating > 3) return null;
-            var advisedLine = new Loan(commitment, start, expiry, riskRating, 0.1);
+            var advisedLine = new Loan(commitment, start, expiry, 0.1);
             return advisedLine;
         }
 
@@ -52,11 +48,6 @@ namespace ESGI.DesignPattern.Projet
         public double GetCommitment()
         {
             return _commitment;
-        }
-
-        public double GetRiskRating()
-        {
-            return _riskRating;
         }
 
         public void Payment(double amount, DateTime paymentDate)
