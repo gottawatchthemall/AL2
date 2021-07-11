@@ -2,14 +2,10 @@
 {
     public class CapitalStrategyRevolver : CapitalStrategy
     {
+        private const double UNUSED_RISK_FACTORS_FOR_RATING = 0.01;
         public override double Capital(Loan loan)
         {
-            return loan.GetCommitment() * Duration(loan) * UnusedRiskFactorFor(loan);
-        }
-
-        private double UnusedRiskFactorFor(Loan loan)
-        {
-            return UnusedRiskFactors.GetFactors().ForRating(loan.GetRiskRating());
+            return loan.GetCommitment() * Duration(loan) * UNUSED_RISK_FACTORS_FOR_RATING;
         }
     }
 }
