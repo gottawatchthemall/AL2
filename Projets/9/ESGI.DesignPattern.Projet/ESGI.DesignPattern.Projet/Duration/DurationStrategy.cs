@@ -9,10 +9,9 @@ namespace ESGI.DesignPattern.Projet
     
     public abstract double Get(Loan loan);
     
-    protected double YearsTo(Loan loan)
+    protected double YearsTo(DateTime? endDate, Loan loan)
     {
         DateTime? beginDate = loan.GetStart();
-        DateTime? endDate = loan.GetExpiry();
         return (double)((endDate?.Ticks - beginDate?.Ticks) / MILLIS_PER_DAY / DAYS_PER_YEAR);
     }
     }

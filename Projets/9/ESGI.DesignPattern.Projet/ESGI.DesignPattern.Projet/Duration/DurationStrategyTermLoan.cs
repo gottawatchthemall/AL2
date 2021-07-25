@@ -19,7 +19,7 @@ namespace ESGI.DesignPattern.Projet
             foreach (var payment in loan.Payments())
             {
                 sumOfPayments += payment.Amount;
-                weightedAverage += YearsTo(loan) * payment.Amount;
+                weightedAverage += YearsTo(payment.Date, loan) * payment.Amount;
             }
 
             return weightedAverage / sumOfPayments;

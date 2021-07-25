@@ -9,7 +9,7 @@ namespace ESGI.DesignPattern.Projet
         
         public override double Get(Loan loan)
         {
-            return YearsTo(loan);
+            return YearsTo(loan.GetExpiry(), loan);
         }
     }
 }
