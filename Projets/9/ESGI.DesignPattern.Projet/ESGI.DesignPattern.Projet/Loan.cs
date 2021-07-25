@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ESGI.DesignPattern.Projet
 {
-    public abstract class Loan
+    public class Loan
     {
         
         private long MILLIS_PER_DAY = 86400000;
@@ -25,21 +25,6 @@ namespace ESGI.DesignPattern.Projet
             _commitment = commitment;
             _start = start;
             _unusedPercentage = unusedPercentage;
-        }
-
-        public static Loan NewTermLoan(double commitment, DateTime start)
-        {
-            return new LoanStrategyAdvisedLine(commitment, start, null, 1.0);
-        }
-
-        public static Loan NewRevolver(double commitment, DateTime start, DateTime expiry)
-        {
-            return new LoanStrategyRevolver(commitment, start, expiry, 1.0);
-        }
-
-        public static Loan NewAdvisedLine(double commitment, DateTime start, DateTime expiry)
-        {
-            return new LoanStrategyTermLoan(commitment, start, expiry, 0.1);
         }
 
         public DateTime? GetExpiry()
@@ -72,11 +57,14 @@ namespace ESGI.DesignPattern.Projet
             return _unusedPercentage;
         }
 
-        public abstract double Capital();
-
-        public virtual double Duration()
+        public double Capital(CapitalStrategy capitalStrategy, DurationStrategy durationStrategy)
         {
-            return YearsTo(GetExpiry());
+            return capitalStrategy.Get(this, durationStrategy);
+        }
+
+        public double Duration(DurationStrategy durationStrategy)
+        {
+            return durationStrategy.Get(this);
         }
         
         protected double YearsTo(DateTime? endDate)
