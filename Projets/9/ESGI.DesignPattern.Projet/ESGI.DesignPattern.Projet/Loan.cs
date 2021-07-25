@@ -3,41 +3,43 @@ using System.Collections.Generic;
 
 namespace ESGI.DesignPattern.Projet
 {
-    public class Loan
+    public abstract class Loan
     {
+        
+        private long MILLIS_PER_DAY = 86400000;
+        private long DAYS_PER_YEAR = 365;
+        protected const double RISK_FACTOR_FOR_RATING = 0.03;
+        
         double _commitment;
         private DateTime? _expiry;
         private DateTime _start;
         private double _unusedPercentage;
         IList<Payment> _payments = new List<Payment>();
-        private CapitalStrategy _capitalStrategy;
 
-        private Loan(double commitment,
+        public Loan(double commitment,
             DateTime start,
             DateTime? expiry,
-            double unusedPercentage,
-            CapitalStrategy capitalStrategy)
+            double unusedPercentage)
         {
             _expiry = expiry;
             _commitment = commitment;
             _start = start;
             _unusedPercentage = unusedPercentage;
-            _capitalStrategy = capitalStrategy;
         }
 
         public static Loan NewTermLoan(double commitment, DateTime start)
         {
-            return new Loan(commitment, start, null, 1.0, new CapitalStrategyTermLoan());
+            return new LoanStrategyAdvisedLine(commitment, start, null, 1.0);
         }
 
         public static Loan NewRevolver(double commitment, DateTime start, DateTime expiry)
         {
-            return new Loan(commitment, start, expiry, 1.0, new CapitalStrategyRevolver());
+            return new LoanStrategyRevolver(commitment, start, expiry, 1.0);
         }
 
         public static Loan NewAdvisedLine(double commitment, DateTime start, DateTime expiry)
         {
-            return new Loan(commitment, start, expiry, 0.1, new CapitalStrategyAdvisedLine());
+            return new LoanStrategyTermLoan(commitment, start, expiry, 0.1);
         }
 
         public DateTime? GetExpiry()
@@ -70,14 +72,17 @@ namespace ESGI.DesignPattern.Projet
             return _unusedPercentage;
         }
 
-        public double Capital()
-        {
-            return _capitalStrategy.Capital(this);
-        }
+        public abstract double Capital();
 
-        public double Duration()
+        public virtual double Duration()
         {
-            return _capitalStrategy.Duration(this);
+            return YearsTo(GetExpiry());
+        }
+        
+        protected double YearsTo(DateTime? endDate)
+        {
+            DateTime? beginDate = GetStart();
+            return (double)((endDate?.Ticks - beginDate?.Ticks) / MILLIS_PER_DAY / DAYS_PER_YEAR);
         }
 
     }
