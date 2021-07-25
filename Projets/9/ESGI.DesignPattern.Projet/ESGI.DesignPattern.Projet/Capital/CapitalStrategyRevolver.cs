@@ -3,9 +3,9 @@
     public class CapitalStrategyRevolver : CapitalStrategy
     {
         private const double UNUSED_RISK_FACTORS_FOR_RATING = 0.01;
-        public override double Capital(Loan loan)
+        public override double Get(Loan loan, DurationStrategy durationStrategy)
         {
-            return loan.GetCommitment() * Duration(loan) * UNUSED_RISK_FACTORS_FOR_RATING;
+            return loan.GetCommitment() * durationStrategy.Get(loan) * UNUSED_RISK_FACTORS_FOR_RATING;
         }
     }
 }
