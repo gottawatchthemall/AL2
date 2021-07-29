@@ -16,9 +16,9 @@ namespace ESGI.DesignPattern.Projet
         {
             return loanType switch
             {
-                LoanType.TermLoan => new Loan(commitment, start, null, 1.0),
-                LoanType.RevolverLoan => new Loan(commitment, start, expiry, 1.0),
-                LoanType.AdvisedLineLoan => new Loan(commitment, start, expiry, 0.1),
+                LoanType.TermLoan => new Loan(commitment, start, 1.0),
+                LoanType.RevolverLoan => new Loan(commitment, start, 1.0, expiry),
+                LoanType.AdvisedLineLoan => new Loan(commitment, start, 0.1, expiry),
                 _ => throw new InvalidDataException()
             };
         }

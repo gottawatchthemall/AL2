@@ -18,8 +18,8 @@ namespace ESGI.DesignPattern.Projet
 
         public Loan(double commitment,
             DateTime start,
-            DateTime? expiry,
-            double unusedPercentage)
+            double unusedPercentage,
+            DateTime? expiry = null)
         {
             _expiry = expiry;
             _commitment = commitment;
